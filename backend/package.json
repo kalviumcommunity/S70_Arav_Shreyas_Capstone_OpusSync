@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "seed": "node seeders/role.seeder.js",
    "dev": "nodemon index.js",
   "build": "mkdir -p dist && cp -r src/* dist/ && cp package.json dist/",
   "start": "node dist/index.js"
