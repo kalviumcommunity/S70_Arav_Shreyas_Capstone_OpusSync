@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "OpusSync_Capstone",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

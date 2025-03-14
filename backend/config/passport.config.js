@@ -1,10 +1,13 @@
 const passport = require('passport');
 const { Strategy: GoogleStrategy} = require('passport-google-oauth20');
-
+const { Strategy: LocalStrategy } = require("passport-local");
 const {config} = require('./app.config');
 const NotFoundException = require('../utils/appError')
 const {ProviderEnum} = require('../enums/account-provider.enum');
-const {loginOrCreateAccountService} = require('../services/auth.service')
+const {
+    loginOrCreateAccountService,
+    verifyUserService
+} = require('../services/auth.service')
 
 passport.use(
     new GoogleStrategy(
@@ -37,6 +40,24 @@ passport.use(
                 done(error,false)
             }
         }
+    )
+)
+
+passport.use(
+    new LocalStrategy(
+        {
+            usernameField: "email",
+            passwordField: "password",
+            session: true,
+        },
+        async (email, password, done) => {
+            try {
+              const user = await verifyUserService({ email, password });
+              return done(null, user);
+            } catch (error) {
+              return done(error, false, { message: error?.message });
+            }
+          }
     )
 )
 
