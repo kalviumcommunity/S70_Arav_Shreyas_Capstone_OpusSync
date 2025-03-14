@@ -34,8 +34,10 @@ app.use(
         }
     })
 )
+
 app.use(passport.initialize())
 app.use(passport.session())
+
 app.use(
     cors({
         origin:config.FRONTEND_ORIGIN,
@@ -56,6 +58,7 @@ app.get(
         })
     })
 )
+
 app.use(`${BASE_PATH}/auth`,authRoutes);
 
 
