@@ -5,4 +5,4 @@ const ProviderEnum = {
     EMAIL: "EMAIL",
 }
 
-module.exports = ProviderEnum;
+module.exports = {ProviderEnum};

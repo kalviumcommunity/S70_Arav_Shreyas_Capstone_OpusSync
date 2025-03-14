@@ -1,7 +1,7 @@
 require('dotenv/config')
 const express = require('express')
 const cors = require('cors')
-const session = require('cookie-session')
+const session = require('express-session')
 
 const { config } = require('./config/app.config')
 const connectDatabase = require('./config/database.config')
@@ -10,6 +10,10 @@ const { HTTPSTATUS } = require('./config/http.config')
 const asyncHandler = require('./middlewares/asyncHandler.middleware')
 const { BadRequestException } = require('./utils/appError')
 const { ErrorCodeEnum } = require("./enums/error-code.enum");
+
+const passport = require('passport')
+const authRoutes = require('./routes/auth.route')
+require('./config/passport.config')
 const app = express()
 const BASE_PATH = config.BASE_PATH
 
@@ -30,7 +34,8 @@ app.use(
         }
     })
 )
-
+app.use(passport.initialize())
+app.use(passport.session())
 app.use(
     cors({
         origin:config.FRONTEND_ORIGIN,
@@ -51,6 +56,8 @@ app.get(
         })
     })
 )
+app.use(`${BASE_PATH}/auth`,authRoutes);
+
 
 app.use(errorHandler)
 

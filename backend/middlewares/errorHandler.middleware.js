@@ -11,7 +11,7 @@ if(error instanceof SyntaxError){
     })
 }
 
-if(error instanceof AppError){
+if(error.statusCode && error.errorCode){
 return res.status(error.statusCode).json({
     message: error.message,
     errorCode: error.errorCode,
