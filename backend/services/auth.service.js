@@ -162,7 +162,7 @@ const verifyUserService = async ({ email, password, provider = ProviderEnum.EMAI
     throw new UnauthorizedException("Invalid email or password");
   }
 
-  return user.omitPassword();
+  return user;
 };
 
 module.exports = {
