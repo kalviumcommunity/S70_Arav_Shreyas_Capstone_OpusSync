@@ -5,6 +5,7 @@ const  ProviderEnum  = require("../enums/account-provider.enum");
 
 const accountSchema = new mongoose.Schema(
     {
+      // Reference to the user who owns the account
       userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
