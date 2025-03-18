@@ -19,6 +19,9 @@ const userSchema = new mongoose.Schema(
         type: String,
         default: null,
       },
+
+      // reference to the workspace the user is currently in
+      
       currentWorkspace: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Workspace",

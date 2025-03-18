@@ -15,11 +15,15 @@ const projectSchema = new mongoose.Schema(
       default: "📊",
     },
     description: { type: String, required: false },
+
+    // Reference to the workspace the project belongs to
     workspace: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Workspace",
       required: true,
     },
+
+    // Reference to the user who created the project
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
