@@ -1,7 +1,6 @@
 require('dotenv/config')
 const express = require('express')
 const cors = require('cors')
-
 const { config } = require('./config/app.config')
 const connectDatabase = require('./config/database.config')
 const errorHandler = require('./middlewares/errorHandler.middleware')
@@ -12,7 +11,12 @@ const { ErrorCodeEnum } = require("./enums/error-code.enum");
 
 const passport = require('passport')
 const authRoutes = require('./routes/auth.route')
+const  userRoutes  = require('./routes/user.route')
+const isAuthenticated = require('./middlewares/isAuthenticated.middleware')
+
+
 require('./config/passport.config')
+
 const app = express()
 const BASE_PATH = config.BASE_PATH
 
@@ -22,7 +26,6 @@ app.use(express.urlencoded({extended:true}))
 
 
 app.use(passport.initialize())
-
 
 app.use(
     cors({
@@ -45,7 +48,7 @@ app.get(
 )
 
 app.use(`${BASE_PATH}/auth`,authRoutes);
-
+app.use(`${BASE_PATH}/user`,isAuthenticated,userRoutes)
 
 app.use(errorHandler)
 
