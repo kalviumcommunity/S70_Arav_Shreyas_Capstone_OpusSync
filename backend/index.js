@@ -1,6 +1,7 @@
 require('dotenv/config')
 const express = require('express')
 const cors = require('cors')
+const cookieParser = require('cookie-parser')
 const { config } = require('./config/app.config')
 const connectDatabase = require('./config/database.config')
 const errorHandler = require('./middlewares/errorHandler.middleware')
@@ -22,6 +23,7 @@ const BASE_PATH = config.BASE_PATH
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
+app.use(cookieParser());
 
 
 
