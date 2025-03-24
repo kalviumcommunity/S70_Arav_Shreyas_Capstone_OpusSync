@@ -1,27 +1,26 @@
-// middleware/isAuthenticated.js
+
 const jwt = require("jsonwebtoken");
 const { UnauthorizedException } = require("../utils/appError");
+const User = require("../models/user.model");
 
-const isAuthenticated = (req, res, next) => {
-    // Get JWT from cookie
+const isAuthenticated = async (req, res, next) => {
     const token = req.cookies.jwt;
-
-    // Check if token exists
     if (!token) {
-        throw new UnauthorizedException("Unauthorized. Please log in.");
+        return next(UnauthorizedException("Unauthorized. Please log in."));
     }
-
     try {
-        // Verify JWT and decode it
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        
-        // Attach decoded user data to req.user
-        req.user = decoded; // { userId, email } from generateToken
-        
-        // Proceed to next middleware/route handler
+        console.log("Decoded Token:", decoded);
+        req.user = decoded;
+        const user = await User.findById(req.user.userId);
+        if (!user) {
+            console.log("User not found with ID:", req.user.userId);
+            return next(UnauthorizedException("User not found"));
+        }
         next();
     } catch (error) {
-        throw new UnauthorizedException("Invalid or expired token. Please log in again.");
+        console.log("JWT Error:", error.message); 
+        return next(UnauthorizedException("Invalid or expired token. Please log in again."));
     }
 };
 
