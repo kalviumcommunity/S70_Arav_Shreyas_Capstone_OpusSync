@@ -1,11 +1,8 @@
-/* This JavaScript code snippet is defining a Mongoose schema for an "Account" model. Here's a
-breakdown of what each part of the code is doing: */
 const mongoose = require('mongoose')
-const  ProviderEnum  = require("../enums/account-provider.enum");
+const { ProviderEnum } = require("../enums/account-provider.enum");
 
 const accountSchema = new mongoose.Schema(
     {
-      // Reference to the user who owns the account
       userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
