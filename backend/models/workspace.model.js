@@ -5,11 +5,9 @@ const workspaceSchema = new mongoose.Schema(
   {
     name: { type: String, required: true, trim: true },
     description: { type: String, required: false },
-
-    // Reference to the owner of the workspace
     owner: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User", // Reference to User model (the workspace creator)
+      ref: "User", 
       required: true,
     },
     inviteCode: {

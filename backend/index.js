@@ -11,8 +11,13 @@ const  BadRequestException  = require('./utils/appError')
 const { ErrorCodeEnum } = require("./enums/error-code.enum");
 
 const passport = require('passport')
+
 const authRoutes = require('./routes/auth.route')
 const  userRoutes  = require('./routes/user.route')
+const workspaceRoutes = require('./routes/workspace.route')
+const memberRoutes = require('./routes/member.route')
+const projectRoutes = require('./routes/project.route')
+const taskRoutes = require('./routes/task.route')
 const isAuthenticated = require('./middlewares/isAuthenticated.middleware')
 
 
@@ -51,6 +56,11 @@ app.get(
 
 app.use(`${BASE_PATH}/auth`,authRoutes);
 app.use(`${BASE_PATH}/user`,isAuthenticated,userRoutes)
+app.use(`${BASE_PATH}/workspace`, isAuthenticated, workspaceRoutes);
+app.use(`${BASE_PATH}/member`, isAuthenticated, memberRoutes);
+app.use(`${BASE_PATH}/project`, isAuthenticated, projectRoutes);
+app.use(`${BASE_PATH}/task`, isAuthenticated, taskRoutes);
+
 
 app.use(errorHandler)
 

@@ -12,11 +12,8 @@ const failedUrl = `${config.FRONTEND_GOOGLE_CALLBACK_URL}?status=failure`;
 
 const authRoutes = express.Router();
 
-// POST api/auth/register
 authRoutes.post("/register", registerUserController);
-// POST api/auth/login
 authRoutes.post("/login", loginController);
-// POST api/auth/logout
 authRoutes.post("/logout", logOutController);
 
 authRoutes.get(
@@ -29,8 +26,7 @@ authRoutes.get(
 authRoutes.get(
   "/google/callback",
   passport.authenticate("google", {
-    failureRedirect: failedUrl,
-    session:false,
+    session: false
   }),
   googleLoginCallback
 );

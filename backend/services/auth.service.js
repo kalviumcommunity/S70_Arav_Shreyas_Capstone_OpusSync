@@ -152,7 +152,7 @@ const verifyUserService = async ({ email, password, provider = ProviderEnum.EMAI
   }
 
   const user = await UserModel.findById(account.userId);
-
+  console.log("Raw user from DB:", user);
   if (!user) {
     throw new NotFoundException("User not found for the given account");
   }
