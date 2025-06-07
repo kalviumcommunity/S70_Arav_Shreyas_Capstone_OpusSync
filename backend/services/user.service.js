@@ -8,4 +8,17 @@ const getCurrentUserService = async (userId) => {
     return { user }; 
 };
 
-module.exports = { getCurrentUserService };
+
+const updateCurrentWorkspaceService = async (userId, workspaceId) => {
+    const user = await UserModel.findByIdAndUpdate(
+      userId,
+      { $set: { currentWorkspace: workspaceId } },
+      { new: true }
+    )
+      .populate("currentWorkspace")
+      .select("-password");
+    console.log("Updated user with new currentWorkspace:", user); 
+    return { user };
+  };
+  
+  module.exports = { getCurrentUserService, updateCurrentWorkspaceService };

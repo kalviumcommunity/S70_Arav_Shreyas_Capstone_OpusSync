@@ -32,6 +32,17 @@ const googleLoginCallback = asyncHandler(async (req, res) => {
         sameSite: "Strict",
         maxAge: 60 * 60 * 1000
     });
+
+    if (!currentWorkspace) {
+      return res.redirect(
+        `${config.FRONTEND_GOOGLE_CALLBACK_URL}?status=failure`
+      );
+    }
+
+    return res.redirect(
+      `${config.FRONTEND_ORIGIN}/workspace/${currentWorkspace}`
+    );
+
     return res.status(HTTPSTATUS.OK).json({
         message: "Google login successful",
         token,
