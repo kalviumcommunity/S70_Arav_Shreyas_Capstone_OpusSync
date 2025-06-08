@@ -36,7 +36,11 @@ const CreateTaskDialog = ({ onClose, workspaceId, task = null, onTaskProcessed, 
       setDescription("");
       setProject(defaultProjectId || ""); // Use defaultProjectId in create mode
       setAssignee("");
+<<<<<<< HEAD
       setDueDate("");
+=======
+      setDueDate("2025-06-01");
+>>>>>>> main
       setStatus("TODO");
       setPriority("MEDIUM");
     }
@@ -52,7 +56,11 @@ const CreateTaskDialog = ({ onClose, workspaceId, task = null, onTaskProcessed, 
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_BACKEND_URL}/project/workspace/${workspaceId}/all`,
+<<<<<<< HEAD
           // { withCredentials: true }
+=======
+          { withCredentials: true }
+>>>>>>> main
         );
         setProjects(response.data.projects || []);
       } catch (error) {
@@ -75,7 +83,11 @@ const CreateTaskDialog = ({ onClose, workspaceId, task = null, onTaskProcessed, 
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_BACKEND_URL}/workspace/members/${workspaceId}`,
+<<<<<<< HEAD
           // { withCredentials: true }
+=======
+          { withCredentials: true }
+>>>>>>> main
         );
         setMembers(response.data.members || []);
       } catch (error) {
@@ -93,7 +105,11 @@ const CreateTaskDialog = ({ onClose, workspaceId, task = null, onTaskProcessed, 
     setErrorMessage("");
     setSuccessMessage("");
 
+<<<<<<< HEAD
     if (!title ||!description|| !project || !assignee || !dueDate || !status || !priority) {
+=======
+    if (!title || !project || !assignee || !dueDate || !status || !priority) {
+>>>>>>> main
       setErrorMessage("All fields marked with * are required.");
       return;
     }
@@ -121,14 +137,22 @@ const CreateTaskDialog = ({ onClose, workspaceId, task = null, onTaskProcessed, 
         response = await axios.put(
           `${import.meta.env.VITE_BACKEND_URL}/task/${task._id}/project/${project}/workspace/${workspaceId}/update`,
           taskData,
+<<<<<<< HEAD
           // { withCredentials: true }
+=======
+          { withCredentials: true }
+>>>>>>> main
         );
       } else {
         console.log("Creating task with data:", taskData);
         response = await axios.post(
           `${import.meta.env.VITE_BACKEND_URL}/task/project/${project}/workspace/${workspaceId}/create`,
           taskData,
+<<<<<<< HEAD
           // { withCredentials: true }
+=======
+          { withCredentials: true }
+>>>>>>> main
         );
       }
       
@@ -191,7 +215,11 @@ const CreateTaskDialog = ({ onClose, workspaceId, task = null, onTaskProcessed, 
           </div>
 
           <div>
+<<<<<<< HEAD
             <FieldLabel htmlFor="description" required>Task Description </FieldLabel>
+=======
+            <FieldLabel htmlFor="description">Task Description <span className="text-xs text-gray-400">(Optional)</span></FieldLabel>
+>>>>>>> main
             <textarea
               id="description"
               className="mt-1 flex min-h-[80px] w-full rounded-lg border border-gray-300 bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-700 focus-visible:border-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
@@ -203,7 +231,11 @@ const CreateTaskDialog = ({ onClose, workspaceId, task = null, onTaskProcessed, 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-5">
             <div>
               <FieldLabel htmlFor="project" required>Project</FieldLabel>
+<<<<<<< HEAD
               <select id="project" value={project} onChange={(e) => setProject(e.target.value)} disabled={loadingProjects || isEditMode || defaultProjectId}
+=======
+              <select id="project" value={project} onChange={(e) => setProject(e.target.value)} disabled={loadingProjects || isEditMode}
+>>>>>>> main
                 className="mt-1 flex h-11 w-full items-center justify-between rounded-lg border border-gray-300 bg-transparent px-3 py-2 text-sm shadow-sm ring-offset-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-700 focus:border-gray-700 disabled:cursor-not-allowed disabled:opacity-50">
                 <option value="" disabled>{loadingProjects ? "Loading projects..." : "Select a project"}</option>
                 {!loadingProjects && projects.length === 0 && <option value="" disabled>No projects available</option>}

@@ -95,7 +95,11 @@ const WorkspaceDashboard = () => {
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_BACKEND_URL}/workspace/members/${currentWorkspaceId}`,
+<<<<<<< HEAD
           // { withCredentials: true }
+=======
+          { withCredentials: true }
+>>>>>>> main
         );
        
         const members = response.data.members || [];
@@ -121,7 +125,11 @@ const WorkspaceDashboard = () => {
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_BACKEND_URL}/task/workspace/${currentWorkspaceId}/all`,
+<<<<<<< HEAD
           // { withCredentials: true }
+=======
+          { withCredentials: true }
+>>>>>>> main
         );
         
         console.log(response.data)
@@ -221,7 +229,11 @@ const WorkspaceDashboard = () => {
       await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/workspace/${currentWorkspaceId}/projects`,
         { name: projectName },
+<<<<<<< HEAD
         // { withCredentials: true }
+=======
+        { withCredentials: true }
+>>>>>>> main
       );
       setProjectName("");
       setProjectCreated((prev) => !prev);

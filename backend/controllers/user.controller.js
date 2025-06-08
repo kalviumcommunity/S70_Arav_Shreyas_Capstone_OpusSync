@@ -1,7 +1,12 @@
 const asyncHandler = require("../middlewares/asyncHandler.middleware");
 const { HTTPSTATUS } = require("../config/http.config");
+<<<<<<< HEAD
 const { getCurrentUserService, updateCurrentWorkspaceService,updateUserProfileService,deleteUserProfilePictureService } = require("../services/user.service");
 const { BadRequestException, UnauthorizedException } = require("../utils/appError");
+=======
+const { getCurrentUserService, updateCurrentWorkspaceService } = require("../services/user.service");
+
+>>>>>>> main
 const getCurrentUserController = asyncHandler(async (req, res) => {
   const userId = req.user ? req.user.userId || req.user._id : null;
   console.log("User ID from req.user:", userId);
@@ -39,6 +44,7 @@ const updateCurrentWorkspaceController = asyncHandler(async (req, res) => {
   });
 });
 
+<<<<<<< HEAD
 const updateUserProfileController = asyncHandler(async (req, res) => {
     const userId = req.user ? req.user._id : null;
     if (!userId) {
@@ -79,3 +85,6 @@ const deleteUserProfilePictureController = asyncHandler(async (req, res) => {
 
 
 module.exports = { getCurrentUserController, updateCurrentWorkspaceController,updateUserProfileController,deleteUserProfilePictureController   };
+=======
+module.exports = { getCurrentUserController, updateCurrentWorkspaceController };
+>>>>>>> main

@@ -1,13 +1,20 @@
+<<<<<<< HEAD
 // src/pages/GoogleOAuthSuccess.jsx (or wherever your component is)
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../../context/auth-context"; // Adjust path as necessary
 import { AudioLines, Loader } from "lucide-react";
+=======
+import { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AudioLines } from "lucide-react";
+>>>>>>> main
 import Button from "../../components/ui/Button";
 
 function GoogleOAuthSuccess() {
   const navigate = useNavigate();
+<<<<<<< HEAD
   const { setUser } = useAuth(); // Get setUser from your auth context
 
   const [isLoading, setIsLoading] = useState(true);
@@ -67,11 +74,22 @@ function GoogleOAuthSuccess() {
       setIsLoading(false);
     }
   }, [navigate, setUser]);
+=======
+
+  useEffect(() => {
+    const timer = setTimeout(() => navigate("/workspace/default"), 3000); // Redirect after 3s
+    return () => clearTimeout(timer);
+  }, [navigate]);
+>>>>>>> main
 
   return (
     <div className="flex min-h-svh flex-col items-center justify-center gap-6 bg-muted p-6 md:p-10">
       <div className="flex w-full max-w-sm flex-col gap-6">
+<<<<<<< HEAD
         <Link to={isLoading ? "#" : "/"} className={`flex items-center gap-2 self-center font-medium ${isLoading ? 'pointer-events-none' : ''}`}>
+=======
+        <Link to="/" className="flex items-center gap-2 self-center font-medium">
+>>>>>>> main
           <div className="flex h-6 w-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
             <AudioLines className="size-4" />
           </div>
@@ -79,6 +97,7 @@ function GoogleOAuthSuccess() {
         </Link>
         <div className="rounded-xl bg-white text-card-foreground shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_-4px_6px_-1px_rgba(0,0,0,0.1),4px_0_6px_-1px_rgba(0,0,0,0.1),-4px_0_6px_-1px_rgba(0,0,0,0.1)]">
           <div className="p-6 text-center">
+<<<<<<< HEAD
             {isLoading && (
               <div className="mb-4 flex justify-center">
                 <Loader className="h-8 w-8 animate-spin text-primary" />
@@ -98,6 +117,20 @@ function GoogleOAuthSuccess() {
                 Return to Sign In
               </Button>
             )}
+=======
+            <h1 className="font-semibold leading-none tracking-tight text-xl mb-2">
+              Authentication Successful
+            </h1>
+            <p className="text-sm text-gray-500 mb-6">
+              Redirecting to your workspace in a moment...
+            </p>
+            <Button
+              onClick={() => navigate("/workspace/default")}
+              className="w-full bg-black text-white hover:bg-black/90"
+            >
+              Continue
+            </Button>
+>>>>>>> main
           </div>
         </div>
       </div>

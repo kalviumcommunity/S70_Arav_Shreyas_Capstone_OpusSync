@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { X } from "lucide-react";
 import axios from "axios";
+<<<<<<< HEAD
 import { useNavigate } from "react-router-dom";
 const CreateWorkspaceDialog = ({ onClose }) => {
    const navigate = useNavigate();
+=======
+
+const CreateWorkspaceDialog = ({ onClose }) => {
+>>>>>>> main
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -17,6 +22,7 @@ const CreateWorkspaceDialog = ({ onClose }) => {
       const response = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/workspace/create/new`,
         { name, description },
+<<<<<<< HEAD
         // { withCredentials: true } // Include cookies for authentication
       );
       console.log("Workspace created:", response.data);
@@ -24,6 +30,12 @@ const CreateWorkspaceDialog = ({ onClose }) => {
        
       onClose(); // Close dialog on successful submission
       navigate(`/workspace/${newWorkspaceId}`);
+=======
+        { withCredentials: true } // Include cookies for authentication
+      );
+      console.log("Workspace created:", response.data);
+      onClose(); // Close dialog on successful submission
+>>>>>>> main
     } catch (err) {
       console.error("Error creating workspace:", err.message, err.response?.data);
       setError("Failed to create workspace. Check the console or ensure you're logged in.");
