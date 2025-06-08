@@ -28,14 +28,16 @@ const BASE_PATH = config.BASE_PATH;
 
 // Apply CORS first with pre-flight handling
 app.options("*", cors({
-  origin: "http://localhost:5173",
+  // origin: "http://localhost:5173",
+  origin: "https://opussync.netlify.app",
   credentials: true,
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   allowedHeaders: "Content-Type, Authorization",
 }));
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    // origin: "http://localhost:5173",
+    origin: "https://opussync.netlify.app",
     credentials: true,
   })
 );
