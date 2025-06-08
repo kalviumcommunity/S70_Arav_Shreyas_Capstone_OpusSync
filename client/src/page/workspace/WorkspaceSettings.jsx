@@ -28,7 +28,11 @@ const WorkspaceSettings = () => {
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_BACKEND_URL}/workspace/${workspaceId}`,
+<<<<<<< HEAD
+          // { withCredentials: true }
+=======
           { withCredentials: true }
+>>>>>>> main
         );
         const data = response.data.workspace;
         setWorkspace(data);
@@ -64,7 +68,11 @@ const WorkspaceSettings = () => {
       const response = await axios.put(
         `${import.meta.env.VITE_BACKEND_URL}/workspace/update/${workspaceId}`,
         { name, description },
+<<<<<<< HEAD
+        // { withCredentials: true }
+=======
         { withCredentials: true }
+>>>>>>> main
       );
       setWorkspace(response.data.workspace);
       setIsEditing(false);
@@ -100,14 +108,22 @@ const WorkspaceSettings = () => {
     try {
       await axios.delete(
         `${import.meta.env.VITE_BACKEND_URL}/workspace/delete/${workspaceId}`,
+<<<<<<< HEAD
+        // { withCredentials: true }
+=======
         { withCredentials: true }
+>>>>>>> main
       );
       console.log("Workspace deleted successfully");
 
       // Fetch updated workspaces
       const response = await axios.get(
         `${import.meta.env.VITE_BACKEND_URL}/workspace/all`,
+<<<<<<< HEAD
+        // { withCredentials: true }
+=======
         { withCredentials: true }
+>>>>>>> main
       );
       const updatedWorkspaces = response.data.workspaces || [];
 
@@ -118,7 +134,11 @@ const WorkspaceSettings = () => {
         const updateResponse = await axios.put(
           `${import.meta.env.VITE_BACKEND_URL}/user/current-workspace`,
           { workspaceId: firstWorkspace._id },
+<<<<<<< HEAD
+          // { withCredentials: true }
+=======
           { withCredentials: true }
+>>>>>>> main
         );
         console.log("Updated current workspace:", updateResponse.data);
 

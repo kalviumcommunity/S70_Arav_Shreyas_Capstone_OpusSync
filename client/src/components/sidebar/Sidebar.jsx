@@ -49,8 +49,17 @@ const Sidebar = ({ isDesktopCollapsed, isMobileOpen, closeMobileSidebar }) => {
     setError(null);
     try {
       const [wsResponse, pjResponse] = await Promise.all([
+<<<<<<< HEAD
+        axios.get(`${import.meta.env.VITE_BACKEND_URL}/workspace/${idToFetch}`, 
+          // { withCredentials: true }
+        ),
+        axios.get(`${import.meta.env.VITE_BACKEND_URL}/project/workspace/${idToFetch}/all`, 
+          // { withCredentials: true }
+        )
+=======
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/workspace/${idToFetch}`, { withCredentials: true }),
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/project/workspace/${idToFetch}/all`, { withCredentials: true })
+>>>>>>> main
       ]);
       const fetchedWs = wsResponse.data.workspace;
       setWorkspaceData({ name: fetchedWs?.name || "Workspace", emoji: fetchedWs?.emoji || "🏢" });
@@ -73,7 +82,13 @@ const Sidebar = ({ isDesktopCollapsed, isMobileOpen, closeMobileSidebar }) => {
     }
     setAllWsLoading(true);
     try {
+<<<<<<< HEAD
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/workspace/all`,
+        //  { withCredentials: true }
+        );
+=======
       const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/workspace/all`, { withCredentials: true });
+>>>>>>> main
       const validWorkspaces = (response.data.workspaces || []).filter(ws => ws && ws._id);
       setWorkspaces(validWorkspaces);
 
@@ -176,7 +191,11 @@ const Sidebar = ({ isDesktopCollapsed, isMobileOpen, closeMobileSidebar }) => {
       const response = await axios.put(
         `${import.meta.env.VITE_BACKEND_URL}/user/current-workspace`,
         { workspaceId: newWorkspaceId },
+<<<<<<< HEAD
+        // { withCredentials: true }
+=======
         { withCredentials: true }
+>>>>>>> main
       );
       
       // Update the user state with the response data
@@ -210,6 +229,19 @@ const Sidebar = ({ isDesktopCollapsed, isMobileOpen, closeMobileSidebar }) => {
 
   const handleLogout = async () => {
     try {
+<<<<<<< HEAD
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/logout`, {},
+        //  { withCredentials: true }
+        );
+    } catch (error) {
+      console.error("Logout API call failed:", error);
+    } finally {
+      sessionStorage.removeItem("accessToken");
+      if (authContextLogout) authContextLogout();
+      else setUser(null);
+      setIsLogoutConfirmOpen(false);
+      navigate("/");
+=======
       await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/logout`, {}, { withCredentials: true });
     } catch (error) {
       console.error("Logout API call failed:", error);
@@ -218,6 +250,7 @@ const Sidebar = ({ isDesktopCollapsed, isMobileOpen, closeMobileSidebar }) => {
       else setUser(null);
       setIsLogoutConfirmOpen(false);
       navigate("/login");
+>>>>>>> main
     }
   };
   

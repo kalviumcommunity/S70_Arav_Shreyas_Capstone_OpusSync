@@ -7,7 +7,11 @@ import CreateTaskDialog from "../../components/workspace/task/CreateTaskDialog";
 import CreateProjectDialog from "../../components/workspace/project/CreateProjectDialog";
 import {
   Plus, X, Loader2, AlertTriangle, Info, CalendarDays, FileText,
+<<<<<<< HEAD
+  UserCircle, Clock, Briefcase, Edit,FolderKanban,ChartLine,
+=======
   UserCircle, Clock, Briefcase, Edit,
+>>>>>>> main
 } from "lucide-react";
 
 const Projects = () => {
@@ -41,7 +45,11 @@ const Projects = () => {
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_BACKEND_URL}/project/${projectId}/workspace/${workspaceId}`,
+<<<<<<< HEAD
+        // { withCredentials: true }
+=======
         { withCredentials: true }
+>>>>>>> main
       );
       console.log("Project details response:", response.data);
       if (response.data && response.data.project) {
@@ -58,7 +66,11 @@ const Projects = () => {
     } finally {
       setLoading(false);
     }
+<<<<<<< HEAD
+  }, [projectId, workspaceId,isEditProjectOpen,isCreateTaskDialogOpen]);
+=======
   }, [projectId, workspaceId]); // Removed isCreateTaskDialogOpen and isEditProjectOpen
+>>>>>>> main
 
   // Fetch tasks to calculate progress
   const fetchTasksForProgress = useCallback(async () => {
@@ -73,7 +85,11 @@ const Projects = () => {
       // Use a more specific endpoint to fetch tasks for the project
       const response = await axios.get(
         `${import.meta.env.VITE_BACKEND_URL}/task/project/${projectId}/all`,
+<<<<<<< HEAD
+        // { withCredentials: true }
+=======
         { withCredentials: true }
+>>>>>>> main
       );
       const tasks = response.data.tasks || [];
       console.log("Tasks response for progress:", tasks);
@@ -95,7 +111,11 @@ const Projects = () => {
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_BACKEND_URL}/task/workspace/${workspaceId}/all`,
+<<<<<<< HEAD
+          // { withCredentials: true }
+=======
           { withCredentials: true }
+>>>>>>> main
         );
         const tasks = response.data.tasks || [];
         console.log("Fallback tasks response for progress:", tasks);
@@ -218,7 +238,11 @@ const Projects = () => {
       <section className="space-y-8">
         <div className="bg-white p-6 md:p-8 rounded-2xl shadow-xl">
           <h2 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-2 border-b border-gray-200 pb-3">
+<<<<<<< HEAD
+            <FolderKanban size={22} className="text-indigo-500" /> Project Overview
+=======
             <Info size={22} className="text-indigo-500" /> Project Overview
+>>>>>>> main
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Left Column: Details */}
@@ -293,7 +317,11 @@ const Projects = () => {
             {/* Right Column: Analytics Cards */}
             <div className="lg:col-span-2">
               <h3 className="text-md font-semibold text-gray-700 mb-4 flex items-center gap-2">
+<<<<<<< HEAD
+                <ChartLine size={18} className="text-teal-500" /> Key Metrics
+=======
                 <Info size={18} className="text-teal-500" /> Key Metrics
+>>>>>>> main
               </h3>
               <ProjectAnalytics projectId={projectId} refreshKey={refreshTaskTableKey} />
             </div>

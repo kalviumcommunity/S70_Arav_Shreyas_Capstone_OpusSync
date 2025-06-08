@@ -11,7 +11,11 @@ const googleLoginController = asyncHandler(async (req, res) => {
     res.cookie("token", authToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
+<<<<<<< HEAD
+        sameSite: process.env.NODE_ENV === "production"?"None":"Lax",
+=======
         sameSite: "strict",
+>>>>>>> main
         maxAge: 7 * 24 * 60 * 60 * 1000, 
     });
 
@@ -19,6 +23,10 @@ const googleLoginController = asyncHandler(async (req, res) => {
     return res.status(HTTPSTATUS.OK).json({
         message: "Google login successful",
         user,
+<<<<<<< HEAD
+        token
+=======
+>>>>>>> main
     });
 });
 

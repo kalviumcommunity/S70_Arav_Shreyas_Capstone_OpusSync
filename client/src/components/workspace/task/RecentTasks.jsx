@@ -28,7 +28,11 @@ const RecentTasks = () => {
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_BACKEND_URL}/task/workspace/${workspaceId}/all`,
+<<<<<<< HEAD
+          // { withCredentials: true } // Include cookies for authentication
+=======
           { withCredentials: true } // Include cookies for authentication
+>>>>>>> main
         );
         console.log("API Response:", response.data);
         setTasks(response.data.tasks || []);
