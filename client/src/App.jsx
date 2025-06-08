@@ -1,24 +1,35 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { AuthProvider } from "./context/auth-context"; // Import AuthProvider
-import SignIn from "./page/auth/SignIn";
-import SignUp from "./page/auth/SignUp";
-import GoogleOAuthFailure from "./page/auth/GoogleOAuthFailure";
-import GoogleOAuthSuccess from "./page/auth/GoogleOAuthSuccess";
-import WorkspaceDashboard from "./page/workspace/WorkspaceDashboard";
-import Members from "./page/workspace/Members";
+// src/App.jsx
+import React from "react";
+import AppRoutes from "./routes/AppRoutes";
+import { AuthProvider } from "./context/auth-context";
+
+class ErrorBoundary extends React.Component {
+  state = { hasError: false, error: null };
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div>
+          <h1>Something went wrong.</h1>
+          <p>Error: {this.state.error.message}</p>
+          <button onClick={() => window.location.reload()}>Retry</button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
 function App() {
   return (
     <AuthProvider>
-        <div>
-          <Routes>
-            <Route path="/" element={<SignIn />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/google-oauth-failure" element={<GoogleOAuthFailure />} />
-            <Route path="/google-oauth-success" element={<GoogleOAuthSuccess />} />
-            <Route path="/workspace/:workspaceId" element={<WorkspaceDashboard />} />
-            <Route path="/member/invite" element={<Members />} />
-          </Routes>
-        </div>
+      <ErrorBoundary>
+        <AppRoutes />
+      </ErrorBoundary>
     </AuthProvider>
   );
 }
