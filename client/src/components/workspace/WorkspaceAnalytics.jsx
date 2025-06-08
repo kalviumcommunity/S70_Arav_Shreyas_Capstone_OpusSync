@@ -21,11 +21,7 @@ const WorkspaceAnalytics = () => {
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_BACKEND_URL}/workspace/analytics/${workspaceId}`,
-<<<<<<< HEAD
           // { withCredentials: true } // Ensure authentication via cookies
-=======
-          { withCredentials: true } // Ensure authentication via cookies
->>>>>>> main
         );
         console.log("Fetched workspace analytics:", response.data.analytics);
         setAnalytics(response.data.analytics || {}); // Fallback to empty object if null

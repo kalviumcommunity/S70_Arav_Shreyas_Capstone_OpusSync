@@ -32,11 +32,7 @@ import CreateTaskDialog from "./CreateTaskDialog";
 import { useNavigate } from "react-router-dom";
 import UserAvatar from "../../../components/common/UserAvatar";
 
-<<<<<<< HEAD
 const TaskTable = ({ workspaceId: propWorkspaceId, projectId: propProjectId, onTaskUpdated,isDialogOpen }) => {
-=======
-const TaskTable = ({ workspaceId: propWorkspaceId, projectId: propProjectId, onTaskUpdated }) => {
->>>>>>> main
   const [tasks, setTasks] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -120,13 +116,9 @@ const TaskTable = ({ workspaceId: propWorkspaceId, projectId: propProjectId, onT
     setError(null);
     try {
       const endpoint = `${import.meta.env.VITE_BACKEND_URL}/task/workspace/${actualWorkspaceId}/all`;
-<<<<<<< HEAD
       const response = await axios.get(endpoint, 
         // { withCredentials: true }
       );
-=======
-      const response = await axios.get(endpoint, { withCredentials: true });
->>>>>>> main
       let fetchedTasks = response.data.tasks || [];
 
       if (propProjectId) {
@@ -141,11 +133,7 @@ const TaskTable = ({ workspaceId: propWorkspaceId, projectId: propProjectId, onT
     } finally {
       setIsLoading(false);
     }
-<<<<<<< HEAD
   }, [actualWorkspaceId, propProjectId,isDialogOpen]);
-=======
-  }, [actualWorkspaceId, propProjectId]);
->>>>>>> main
 
   useEffect(() => {
     fetchTasks();
@@ -305,11 +293,7 @@ const TaskTable = ({ workspaceId: propWorkspaceId, projectId: propProjectId, onT
     try {
       await axios.delete(
         `${import.meta.env.VITE_BACKEND_URL}/task/${taskId}/workspace/${actualWorkspaceId}/delete`,
-<<<<<<< HEAD
         // { withCredentials: true }
-=======
-        { withCredentials: true }
->>>>>>> main
       );
       fetchTasks();
       setSelectedRows((prev) => {
@@ -635,11 +619,7 @@ const TaskTable = ({ workspaceId: propWorkspaceId, projectId: propProjectId, onT
                 </div>
               )}
             </div>
-<<<<<<< HEAD
             
-=======
-            {!propProjectId && (
->>>>>>> main
               <div className="relative">
                 <button
                   onClick={() => toggleDropdown("assignedTo")}
@@ -680,13 +660,8 @@ const TaskTable = ({ workspaceId: propWorkspaceId, projectId: propProjectId, onT
                   </div>
                 )}
               </div>
-<<<<<<< HEAD
             
            
-=======
-            )}
-            {!propProjectId && (
->>>>>>> main
               <div className="relative">
                 <button
                   onClick={() => toggleDropdown("projects")}
@@ -727,11 +702,7 @@ const TaskTable = ({ workspaceId: propWorkspaceId, projectId: propProjectId, onT
                   </div>
                 )}
               </div>
-<<<<<<< HEAD
             
-=======
-            )}
->>>>>>> main
           </div>
         </div>
         <div className="relative columns-dropdown-button">

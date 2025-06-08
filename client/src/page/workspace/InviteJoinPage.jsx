@@ -29,7 +29,6 @@ const InviteJoinPage = () => {
       const response = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/member/workspace/${inviteCode}/join`,
         {},
-<<<<<<< HEAD
         // { withCredentials: true }
       );
       console.log("Join response:", response.data);
@@ -37,15 +36,6 @@ const InviteJoinPage = () => {
       // Handle API response
       if (response.data) {
         const workspaceId = response.data.workspaceId ; // Adjust based on API
-=======
-        { withCredentials: true }
-      );
-      console.log("Join response:", response.data);
-
-      // Handle API response
-      if (response.data.success) {
-        const workspaceId = response.data.workspaceId || inviteCode; // Adjust based on API
->>>>>>> main
         setUser({ ...user, currentWorkspace: workspaceId }); // Update user context if needed
         navigate(`/workspace/${workspaceId}`);
       } else if (response.data.message === "User already in workspace") {
@@ -106,11 +96,7 @@ const InviteJoinPage = () => {
                       href={`/sign-up?returnUrl=/invite/workspace/${inviteCode}/join`}
                       data-discover="true"
                     >
-<<<<<<< HEAD
                       <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 disabled:pointer-events-none disabled:opacity-50 bg-black text-white shadow hover:bg-black h-9 px-4 py-2 w-full">
-=======
-                      <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 disabled:pointer-events-none disabled:opacity-50 bg-blue-600 text-white shadow hover:bg-blue-700 h-9 px-4 py-2 w-full">
->>>>>>> main
                         Signup
                       </button>
                     </a>

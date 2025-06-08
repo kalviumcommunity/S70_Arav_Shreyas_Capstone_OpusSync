@@ -40,7 +40,6 @@ function SignIn() {
       const response = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/auth/login`,
         { email, password },
-<<<<<<< HEAD
         // { withCredentials: true }
       );
       console.log("Login response:", response.data);
@@ -61,14 +60,6 @@ function SignIn() {
     }
 
 
-=======
-        { withCredentials: true }
-      );
-      console.log("Login response:", response.data);
-      const user = response.data.user; // Extract the nested user object
-      if (!user || !user._id) throw new Error("Invalid user data from backend");
-      setUser(user);
->>>>>>> main
       const workspaceId = user.currentWorkspace; // Use the string directly since it's not an object
       const decodedUrl = returnUrl ? decodeURIComponent(returnUrl) : null;
       navigate(decodedUrl || `/workspace/${workspaceId || "default"}`);

@@ -22,7 +22,6 @@ const updateCurrentWorkspaceService = async (userId, workspaceId) => {
     console.log("Updated user with new currentWorkspace:", user); 
     return { user };
   };
-<<<<<<< HEAD
 const updateUserProfileService = async (userId, updateData) => {
     const user = await UserModel.findById(userId);
     if (!user) {
@@ -78,7 +77,3 @@ const deleteUserProfilePictureService = async (userId) => {
 
   
   module.exports = { getCurrentUserService, updateCurrentWorkspaceService,updateUserProfileService,deleteUserProfilePictureService };
-=======
-  
-  module.exports = { getCurrentUserService, updateCurrentWorkspaceService };
->>>>>>> main

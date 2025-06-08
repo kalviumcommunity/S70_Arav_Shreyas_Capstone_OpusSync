@@ -17,7 +17,6 @@ const generateToken = (user) => {
 };
 
 const googleLoginCallback = asyncHandler(async (req, res) => {
-<<<<<<< HEAD
   if (!req.user) {
     return res.status(HTTPSTATUS.UNAUTHORIZED).json({ message: "Google authentication failed" });
   }
@@ -43,33 +42,6 @@ const googleLoginCallback = asyncHandler(async (req, res) => {
   if (isAppleDevice) {
     // iOS/macOS Safari -> respond with JSON for frontend handling
     return res.redirect(`${config.FRONTEND_ORIGIN}/google-oauth-success#token=${token}&workspaceId=${currentWorkspace}`);
-=======
-    if (!req.user) {
-        return res.status(HTTPSTATUS.UNAUTHORIZED).json({ message: "Google authentication failed" });
-    }
-    const currentWorkspace = req.user.currentWorkspace;
-    if (!currentWorkspace) {
-        return res.status(HTTPSTATUS.BAD_REQUEST).json({ message: "No workspace assigned" });
-    }
-    const token = generateToken(req.user);
-    
-    res.cookie("jwt", token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "Strict",
-        maxAge: 60 * 60 * 1000
-    });
-
-    if (!currentWorkspace) {
-      return res.redirect(
-        `${config.FRONTEND_GOOGLE_CALLBACK_URL}?status=failure`
-      );
-    }
-
-    return res.redirect(
-      `${config.FRONTEND_ORIGIN}/workspace/${currentWorkspace}`
-    );
->>>>>>> main
 
     return res.status(HTTPSTATUS.OK).json({
       message: "Google login successful",
