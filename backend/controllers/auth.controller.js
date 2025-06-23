@@ -13,7 +13,7 @@ const { BadRequestException } = require("../utils/appError");
 
 const generateToken = (user) => {
     return jwt.sign(
-        { userId: user._id, email: user.email },
+        { userId: user._id, email: user.email,name: user.name },
         process.env.JWT_SECRET,
         { expiresIn: "1h" }
     );
@@ -54,6 +54,7 @@ const googleLoginCallback = asyncHandler(async (req, res) => {
     });
   } else {
     // Other devices -> redirect directly from backend
+    console.log(currentWorkspace)
     return res.redirect(`${config.FRONTEND_ORIGIN}/workspace/${currentWorkspace}`);
   }
 })

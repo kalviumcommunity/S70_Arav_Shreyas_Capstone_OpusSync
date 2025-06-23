@@ -99,7 +99,7 @@ const AccountSettingsPage = () => {
     }
   };
 
-  //  Function to upload file directly to Cloudinary
+  // Function to upload file directly to Cloudinary
   const uploadToCloudinary = async (file) => {
     const formData = new FormData();
     formData.append("file", file);
@@ -111,14 +111,14 @@ const AccountSettingsPage = () => {
 
     try {
       const response = await axios.post(
-        //  IMPORTANT: Replace with your actual Cloudinary cloud name
+        // IMPORTANT: Replace with your actual Cloudinary cloud name
         `https://api.cloudinary.com/v1_1/${
           import.meta.env.VITE_CLOUDINARY_CLOUD_NAME
         }/image/upload`,
         formData,
         { withCredentials: false }
       );
-     
+      console.log(response.data.public_id)
       return {
       url: response.data.secure_url,
       publicId: response.data.public_id,
