@@ -30,7 +30,7 @@ const ResetPasswordPage = () => {
 
         try {
             const response = await axios.post(
-                ${import.meta.env.VITE_BACKEND_URL}/auth/reset-password,
+                `${import.meta.env.VITE_BACKEND_URL}/auth/reset-password`,
                 { resetToken, newPassword }
             );
             setSuccessMessage(response.data.message + " Redirecting to login...");

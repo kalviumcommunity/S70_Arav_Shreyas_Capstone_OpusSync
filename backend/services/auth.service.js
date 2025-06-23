@@ -13,12 +13,12 @@ const {
 } = require("../utils/appError");
 const jwt = require('jsonwebtoken')
 
-
+// --- NEW IMPORTS FOR OTP ---
 const OtpModel = require("../models/otp.model");
 const otpGenerator = require('otp-generator');
 const { hashValue, compareValue } = require("../utils/bcrypt");
 const { sendEmail } = require("./email.service");
-
+// -------------------------
 
 const loginOrCreateAccountService = async (data) => {
   const { providerId, provider, displayName, email, picture } = data;

@@ -1,7 +1,8 @@
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 const sendEmail = async (options) => {
-  
+  // For production, use a transactional email service like SendGrid, Postmark, or AWS SES.
+  // For development, you can use a service like mailtrap.io or a configured Gmail account with an "App Password".
   const transporter = nodemailer.createTransport({
     host: process.env.EMAIL_HOST,
     port: process.env.EMAIL_PORT,

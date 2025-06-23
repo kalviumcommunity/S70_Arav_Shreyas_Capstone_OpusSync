@@ -2,6 +2,9 @@
 import React from "react";
 import AppRoutes from "./routes/AppRoutes";
 import { AuthProvider } from "./context/auth-context";
+import { SocketProvider } from './context/SocketContext';
+import { OnlineUsersProvider } from './context/OnlineUsersContext';
+
 
 class ErrorBoundary extends React.Component {
   state = { hasError: false, error: null };
@@ -27,9 +30,13 @@ class ErrorBoundary extends React.Component {
 function App() {
   return (
     <AuthProvider>
+      <SocketProvider>
+         <OnlineUsersProvider>
       <ErrorBoundary>
         <AppRoutes />
       </ErrorBoundary>
+      </OnlineUsersProvider>
+      </SocketProvider>
     </AuthProvider>
   );
 }

@@ -4,11 +4,14 @@ import Sidebar from "../components/sidebar/Sidebar";
 import Header from "../components/common/Header";
 import { Outlet, useLocation } from "react-router-dom";
 
+
 const AppLayout = () => {
   const [isDesktopSidebarCollapsed, setIsDesktopSidebarCollapsed] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const location = useLocation();
 
+
+  
   const toggleDesktopSidebar = () => {
     setIsDesktopSidebarCollapsed((prev) => !prev);
   };
@@ -68,6 +71,7 @@ const AppLayout = () => {
           aria-hidden="true"
         ></div>
       )}
+     
     </div>
   );
 };
