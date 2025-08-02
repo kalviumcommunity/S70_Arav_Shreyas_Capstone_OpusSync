@@ -39,6 +39,8 @@ OpusSync is a multi-tenancy project management system built using the MERN stack
 - Task Progress Updates – Auto-update calendar based on task status
 - Color-Coded Events & Categories – Differentiate between meetings, tasks, and deadlines
 
+### **6. AI-Powered Assistance**
+- AI Task Description Generation: Instantly generate detailed, markdown-formatted task descriptions from just a title using Google's Gemini API. An intelligent review workflow allows users to apply, discard, or regenerate suggestions, ensuring full control.
 
 ---
 
