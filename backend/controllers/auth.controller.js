@@ -54,8 +54,7 @@ const googleLoginCallback = asyncHandler(async (req, res) => {
     });
   } else {
     // Other devices -> redirect directly from backend
-    console.log(currentWorkspace)
-    return res.redirect(`${config.FRONTEND_ORIGIN}/workspace/${currentWorkspace}`);
+    return res.redirect(`${config.FRONTEND_ORIGIN}/workspace/${currentWorkspace._id}`);
   }
 })
 
