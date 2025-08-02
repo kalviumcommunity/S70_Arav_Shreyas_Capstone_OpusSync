@@ -21,6 +21,7 @@ const appConfig = () =>({
     CLOUDINARY_CLOUD_NAME: getEnv('CLOUDINARY_CLOUD_NAME'), 
     CLOUDINARY_API_KEY: getEnv('CLOUDINARY_API_KEY'),       
     CLOUDINARY_API_SECRET: getEnv('CLOUDINARY_API_SECRET'), 
+    GEMINI_API_KEY:getEnv('GEMINI_API_KEY')
 })
 
 const config = appConfig();
